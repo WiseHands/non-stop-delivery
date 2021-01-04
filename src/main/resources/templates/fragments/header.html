@@ -1,0 +1,27 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<header th:fragment="header">
+    <div class="header-full">
+        <div class="header-first-block">
+            <div class="header-icon">
+                <a href="/">Main</a>
+            </div>
+            <div class="header-null">
+                <a href="javascript:void(0)" class="icon" onclick="myFunction()">
+                    <i class="hamburger fa fa-bars"></i>
+                </a>
+            </div>
+        </div>
+        <div class="header-right-block">
+            <div th:replace="fragments/signInWidget :: signInWidget"></div>
+            <div th:replace="fragments/languageWidget :: languageWidget"></div>
+        </div>
+    </div>
+    <div id="myLinks">
+    </div>
+</header>
+</body>
+</html>

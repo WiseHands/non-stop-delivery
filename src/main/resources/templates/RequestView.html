@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <title>Admin Page</title>
+        <link rel="stylesheet" href="../../../../../../admin.css">
+        <link rel="shortcut icon" href="/img/wdelivery-dark-icon.png" type="image/x-icon">
+        <script src="/requestEntryCheckByCourier.js" type="text/javascript"></script>
+        <script th:inline="javascript">let id = /*[[${request.id}]]*/;</script>
+    </head>
+    <body>
+        <div class="main-container">
+            <ul class="menu-breadcrumb">
+                <li><a href="/">Головна</a></li>
+                <li><a href="#">Заявка</a></li>
+            </ul>
+            <div id="hideifsuccess" class="team-request">
+                <h3>Заявка кур'єру</h3>
+                <div class="admin-capitan">
+                    <p>№ замовлення</p>
+                    <input placeholder="№ замовлення" id="orderNumber" type="number" min="0" name="orderNumber" th:value="*{request.orderNumber}" disabled>
+                    <p>Вартість</p>
+                    <input placeholder="Вартість" id="orderPrice" type="number" min="0" name="orderPrice" th:value="*{request.orderPrice}" disabled>
+                    <p>Вулиця</p>
+                    <input placeholder="Вулиця" id="streetName" type="text" name="streetName" th:value="*{request.streetName}" disabled>
+                    <p>Будинок</p>
+                    <input placeholder="Будинок" id="buildingName" type="text" name="buildingName" th:value="*{request.buildingName}" disabled>
+                    <p>Квартира</p>
+                    <input placeholder="Квартира" id="apartmentName" type="text" name="apartmentName" th:value="*{request.apartmentName}" disabled>
+                    <p>Код дверей</p>
+                    <input placeholder="Код" id="entranceCode" type="text" name="entranceCode" th:value="*{request.entranceCode}" disabled>
+                    <p>Ім'я кур'єра</p>
+                    <input placeholder="Ім'я кур'єра" id="courierName" type="text" name="courierName" th:value="*{request.courierName}" required>
+                    <p>Заявку закріплено за кур'єром:</p>
+                    <p th:if="${request.orderInCourierProcessing == true}" style="color: #03dac6;">Так</p>
+                    <p th:if="${request.orderInCourierProcessing == false}" style="color: #cf6679;">Ні</p>
+                </div>
+                <div class="slogan-button">
+<!--                    <input class="main-input-button" type="button" value="Зберегти" onclick="putTeamRequestById()">-->
+                    <input th:if="${request.orderInCourierProcessing == false}" id="acceptRequest" class="main-input-button main-input-button-del" type="button" value="Прийняти заявку" onclick="submit()">
+                </div>
+            </div>
+            <div id="success" class="player-bg"><p>Заявку успішно підтверджено!</p></div>
+            <div id="error" class="player-bg"><p>Помилка при підтвердженні заявки! Скоріше за все, заявку прийняв інший кур'єр. Зв'яжіться з адміністраторами NonStop Delivery</p></div>
+<!--            <div class="slogan-button">
+                <input id="success-button" class="main-input-button main-input-button-all" type="button" value="На головну" th:onclick="|location.href='@{'/'}'|">
+            </div>-->
+        </div>
+    </body>
+</html>

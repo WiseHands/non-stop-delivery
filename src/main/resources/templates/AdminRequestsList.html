@@ -1,0 +1,60 @@
+<html>
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+    <title>Admin | FootGo League</title>
+    <link rel="stylesheet" href="../../../admin.css">
+    <link rel="shortcut icon" href="/img/wdelivery-dark-icon.png" type="image/x-icon"></head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body>
+<div class="auth-form">
+    <p th:text="${#authentication.principal.username}"></p>
+    <form id="logoutForm" th:action="@{/logout}" method="POST">
+        <!--        <input value="Logout" type="submit">-->
+    </form>
+    <a href="#" onclick="document.forms['logoutForm'].submit()">Вийти | </a>
+    <a th:href="@{/}">На головну</a>
+</div>
+
+    <div class="main-container">
+        <div class="admin-main">
+            <div class="admin-logo">
+                <a href="/admin"><img class="admin-img" src="/logo/logo2.png" alt="logo"></a>
+            </div>
+        </div>
+        <div class="requests">
+            <p>Заявки</p>
+            <div class="season-block all-requests request-form">
+                <div class="request-card">
+                    <a class="link-style" href="/admin/newForm">
+                        <div class="request-block add-season" title="Створити нову заявку">
+                            <i class="fa fa-plus"></i>
+                            <h4 class="create-request-text">Створити нову заявку</h4>
+                        </div>
+                    </a>
+                </div>
+                <div class="request-card" th:each="request : ${requestsList}">
+                    <a th:href="'/admin/submission/edit/' + ${request.id}" class="link-style">
+                        <div class="request-block">
+                            <h3 th:text="${request.orderNumber}"></h3>
+                            <h4 th:if="${request.orderInCourierProcessing == true}" style="color: #03dac6;">Закріплено за кур'єром</h4>
+                            <h4 th:if="${request.orderInCourierProcessing == false}" style="color: #cf6679;">Не закріплено за кур'єром</h4>
+                            <h4 th:if="${request.courierName != null}" th:text="${request.courierName}" class="courier-name"></h4>
+                        </div>
+                    </a>
+                </div>
+<!--                <div th:each="tournament : ${tournamentList}">
+                    <a th:href="'/admin/tournament/' + ${tournament.id}" class="link-style">
+                        <div class="request-block">
+                            <h3 th:text="${tournament.name}"></h3>
+                        </div>
+                    </a>
+                </div>-->
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

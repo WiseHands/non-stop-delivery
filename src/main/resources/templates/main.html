@@ -1,0 +1,46 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title th:if="${#locale.language == 'en' || #locale.language == '' || #locale.language == null}" th:text="#{title}"></title>
+    <title th:if="${#locale.language == 'uk'}" th:text="#{title}"></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="img/wdelivery-dark-icon.png" type="image/x-icon">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="hamburger.css">
+    <link href="https://fonts.googleapis.com/css?family=Gugi" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+</head>
+<body class="main-photo">
+<header th:replace="fragments/header :: header"></header>
+<div class="main-head">
+    <div class="main-head-title">
+        <div class="main-head-logo" alt="wiselogo"></div>
+        <h1 th:text="#{mainHeaderTitle}"></h1>
+
+        <!--<h1 th:text="Empty" th:if="${#lists.isEmpty(listName)}" class="empty-text-error"></h1>-->
+
+    </div>
+</div>
+<div class="main-head-title mobile-head">
+    <div class="main-head-logo" alt="wiselogo"></div>
+    <h1 th:text="#{mainHeaderTitle}"></h1>
+</div>
+
+<div th:replace="fragments/footer :: footer"></div>
+
+<script src="hamburger.js"></script>
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-39722519-3"></script>
+<!--<script src="/imgPlaceholderSetScript.js" type="text/javascript"></script>-->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-39722519-3');
+</script>
+
+</body>
+</html>
