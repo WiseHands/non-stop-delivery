@@ -67,7 +67,7 @@ public class NewRequestController {
         String message = String.format("Доброго дня, заклад %s, замовлення № %s на суму %s за адресою %s, %s/%s%s </br>%s",
                 shopName, orderNumber, orderPrice, streetName, buildingName, apartmentName, ", код під'їзду " + entranceCode,
                 "Лінк для перегляду або підтвердження заявки: http://localhost:8080/request/" + requestId);
-        String addressList = "research.010@gmail.com, 00cc0000@gmail.com";
+        String addressList = "nikolass.non.stop.delivery@gmail.com, andrzjey.non.stop.delivery@gmail.com";
 
         //for send message check to own Gmail setting https://myaccount.google.com/lesssecureapps pls turn ON for sending message
         Mailer.send(gmailUserName, gmailPassword, addressList, titleMessage, message);
