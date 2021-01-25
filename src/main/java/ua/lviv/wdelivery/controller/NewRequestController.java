@@ -64,9 +64,10 @@ public class NewRequestController {
         String entranceCode = newRequestJsonBody.getEntranceCode();
 
         String titleMessage = "Заявка для кур'єра";
+        String requestHref = "https://nonstop-delivery.com/request/";
         String message = String.format("Доброго дня, заклад %s, замовлення № %s на суму %s за адресою %s, %s/%s%s </br>%s",
                 shopName, orderNumber, orderPrice, streetName, buildingName, apartmentName, ", код під'їзду " + entranceCode,
-                "Лінк для перегляду або підтвердження заявки: http://localhost:8080/request/" + requestId);
+                "Лінк для перегляду або підтвердження заявки: " + requestHref + requestId);
         String addressList = "nikolass.non.stop.delivery@gmail.com, andrzjey.non.stop.delivery@gmail.com";
 
         //for send message check to own Gmail setting https://myaccount.google.com/lesssecureapps pls turn ON for sending message
